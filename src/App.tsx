@@ -1,9 +1,10 @@
+import { Copyright } from '@mui/icons-material';
+import { Box, Container, Typography } from '@mui/material';
 import { invoke } from '@tauri-apps/api';
 import { useState } from 'react';
 import './App.css';
-import reactLogo from './assets/react.svg';
 
-const Button = () => {
+const Button2 = () => {
   const greetHandler = () => {
     // now we can call our Command!
     // Right-click the application background and open the developer tools.
@@ -20,29 +21,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <Button />
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Vite.js example
+        </Typography>
+        <Copyright />
+      </Box>
+    </Container>
   );
 }
 
