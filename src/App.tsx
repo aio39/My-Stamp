@@ -1,9 +1,10 @@
-import { Copyright } from '@mui/icons-material';
-import { Box, Container, Typography } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import { AppBar, Box, Toolbar } from '@mui/material';
 import { invoke } from '@tauri-apps/api';
 import { useState } from 'react';
 import './App.css';
-
+import SearchIconWrapper from './components/SearchIconWrapper';
+import StyledInputBase from './components/SearchInput';
 const Button2 = () => {
   const greetHandler = () => {
     // now we can call our Command!
@@ -21,14 +22,26 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Vite.js example
-        </Typography>
-        <Copyright />
-      </Box>
-    </Container>
+    <Box
+      sx={{
+        width: '100wh',
+        height: '100vh',
+        flexGrow: 1,
+        backgroundColor: 'primary.dark',
+      }}
+    >
+      <AppBar position="static">
+        <Toolbar>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
 
