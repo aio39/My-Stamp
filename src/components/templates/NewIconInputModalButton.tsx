@@ -1,8 +1,7 @@
 import { Button, Input, Modal } from 'antd';
 import React, { useState } from 'react';
-import todoModel from '../../models/todoModel';
+import stampModel from '../../models/stampModel';
 import ImageUploadBox from '../atoms/ImageUploadBox';
-import NewTagsInput from '../organisms/NewTagsInput';
 
 const NewIconInputModalButton: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -28,8 +27,8 @@ const NewIconInputModalButton: React.FC = () => {
   };
 
   const handleClick = async () => {
-    const todo = await todoModel.create('test');
-    console.log(todo);
+    const stamp = await stampModel.create('test');
+    console.log(stamp);
   };
 
   return (
@@ -46,7 +45,6 @@ const NewIconInputModalButton: React.FC = () => {
       >
         <p>{modalText}</p>
         <ImageUploadBox />
-        <NewTagsInput />
         <Input.Group compact>
           <Input
             style={{ width: 'calc(100% - 200px)' }}

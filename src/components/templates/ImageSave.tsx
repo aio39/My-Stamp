@@ -1,11 +1,5 @@
 import { open } from '@tauri-apps/api/dialog';
-import {
-  BaseDirectory,
-  createDir,
-  readBinaryFile,
-  readDir,
-  writeBinaryFile,
-} from '@tauri-apps/api/fs';
+import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { useRef } from 'react';
 
 const IMAGE_DIR = 'images';
@@ -26,19 +20,22 @@ const ImageSave = () => {
 
     if (selected === null) return;
 
-    const bytes = await readBinaryFile(selected as string);
-    const entries = await readDir(IMAGE_DIR, { dir: BaseDirectory.App });
-    if (entries.length === 0) {
-      await createDir(IMAGE_DIR, { dir: BaseDirectory.App });
-    }
+    // const bytes = await readBinaryFile(selected as string);
+    // const entries = await readDir(IMAGE_DIR, { dir: BaseDirectory.App });
+    // if (entries.length === 0) {
+    //   await createDir(IMAGE_DIR, { dir: BaseDirectory.App });
+    // }
 
-    writeBinaryFile(`${IMAGE_DIR}/test${Date.now()}.png`, bytes, {
-      dir: BaseDirectory.App,
-    });
+    // writeBinaryFile(`${IMAGE_DIR}/test${Date.now()}.png`, bytes, {
+    //   dir: BaseDirectory.App,
+    // });
 
-    const blob = new Blob([bytes], { type: 'image/png' });
-    const url = URL.createObjectURL(blob);
-    if (imgRef.current) imgRef.current.src = url;
+    // const blob = new Blob([bytes], { type: 'image/png' });
+    // const url = URL.createObjectURL(blob);
+    // if (imgRef.current) imgRef.current.src = url;
+
+    const assetUrl = convertFileSrc(selected as string);
+    if (imgRef.current) imgRef.current.src = assetUrl;
   };
 
   return (

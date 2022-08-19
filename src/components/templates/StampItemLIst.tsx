@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import todoModel from '../../models/todoModel';
-import { Todo } from '../../types/Todo';
+import stampModel from '../../models/stampModel';
+import { Stamp } from '../../types/Stamp';
 import StampItem from '../organisms/StampItem';
 
 const StampItemList = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [stamps, setStamps] = useState<Stamp[]>([]);
 
   useEffect(() => {
-    todoModel.all().then((todos) => {
-      setTodos(todos);
+    stampModel.all().then((stamps) => {
+      setStamps(stamps);
     });
   }, []);
 
   return (
     <div>
-      {todos.map((todo) => {
-        return <StampItem key={todo.id} todo={todo} />;
+      {stamps.map((stamp) => {
+        return <StampItem key={stamp.id} stamp={stamp} />;
       })}
     </div>
   );

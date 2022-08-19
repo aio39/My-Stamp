@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Todo } from '../../types/Todo';
+import { Stamp } from '../../types/Stamp';
 
-type Props = { todo: Todo };
+type Props = { stamp: Stamp };
 
-const StampItem: FC<Props> = ({ todo }) => {
-  return <div>{todo.title}</div>;
+const StampItem: FC<Props> = ({ stamp }) => {
+  return <div>{stamp.title}</div>;
 };
 
 export default StampItem;
