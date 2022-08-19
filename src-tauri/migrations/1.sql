@@ -1,9 +1,12 @@
--- CREATE TABLE stamps (
---   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
---   title VARCHAR(200) NOT NULL,
---   path VARCHAR(200) NOT NULL,
---   content TEXT,
--- );
+CREATE TABLE stamps (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(200) NOT NULL,
+  path VARCHAR(200) NOT NULL,
+  content VARCHAR(200) NULL
+);
+
+-- fulltext index on content
+-- CREATE VIRTUAL TABLE stamps USING fts5(title, content, path);
 
 CREATE TABLE stamps_tags (
   stamp_id INTEGER NOT NULL,
@@ -15,5 +18,4 @@ CREATE TABLE tags (
   name VARCHAR(200) NOT NULL
 );
 
--- fulltext index on content
-CREATE VIRTUAL TABLE stamps USING fts4(title, content, path);
+

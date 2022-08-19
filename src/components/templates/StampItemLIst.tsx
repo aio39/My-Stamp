@@ -1,3 +1,4 @@
+import { Space } from 'antd';
 import { useEffect, useState } from 'react';
 import stampModel from '../../models/stampModel';
 import { Stamp } from '../../types/Stamp';
@@ -8,16 +9,21 @@ const StampItemList = () => {
 
   useEffect(() => {
     stampModel.all().then((stamps) => {
+      console.log(stamps);
       setStamps(stamps);
     });
   }, []);
 
   return (
-    <div>
+    <Space
+      direction="horizontal"
+      size="middle"
+      style={{ display: 'flex', width: '100%', height: '100%' }}
+    >
       {stamps.map((stamp) => {
         return <StampItem key={stamp.id} stamp={stamp} />;
       })}
-    </div>
+    </Space>
   );
 };
 

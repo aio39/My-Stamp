@@ -7,12 +7,12 @@ const db = await Database.load('sqlite:test.db').then((instance) => {
 
 async function all(): Promise<Stamp[]> {
   await db;
-  return await db.select('SELECT * FROM stamps');
+  return await db.select(`SELECT * FROM stamps `);
 }
 
 async function create(newStamp: NewStamp): Promise<Stamp> {
   const { lastInsertId: id } = await db.execute(
-    'INSERT INTO stamps (title) VALUES ($1)',
+    'INSERT INTO stamps (title, content, path) VALUES ($1, $2, $3)',
     [newStamp.title, newStamp.content, newStamp.path]
   );
   return {
@@ -23,8 +23,8 @@ async function create(newStamp: NewStamp): Promise<Stamp> {
 
 async function update(stamp: Stamp): Promise<Stamp> {
   await db.execute(
-    'UPDATE stamps SET title = $1, completed = $2 WHERE id = $3',
-    [stamp.title, stamp.content, stamp.path, stamp.id]
+    'UPDATE stamps SET title = $1, content = $2, WHERE id = $3',
+    [stamp.title, stamp.content, stamp.id]
   );
   return stamp;
 }
