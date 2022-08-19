@@ -22,10 +22,11 @@ async function create(newStamp: NewStamp): Promise<Stamp> {
 }
 
 async function update(stamp: Stamp): Promise<Stamp> {
-  await db.execute(
-    'UPDATE stamps SET title = $1, content = $2, WHERE id = $3',
-    [stamp.title, stamp.content, stamp.id]
-  );
+  await db.execute('UPDATE stamps SET title = $1, content = $2 WHERE id = $3', [
+    stamp.title,
+    stamp.content,
+    stamp.id,
+  ]);
   return stamp;
 }
 
