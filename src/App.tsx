@@ -4,6 +4,7 @@ import { Content } from 'antd/lib/layout/layout';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import SearchInput from './components/SearchInput';
+import ImageSave from './components/templates/ImageSave';
 import NewIconInputModalButton from './components/templates/NewIconInputModalButton';
 import SideBar from './components/templates/SideBar';
 import StampItemList from './components/templates/StampItemLIst';
@@ -32,6 +33,7 @@ function App() {
               <SearchInput />
               <NewIconInputModalButton />
               <StampItemList />
+              <ImageSave />
             </Layout>
           </Content>
           {/* <Footer>Footer</Footer> */}
