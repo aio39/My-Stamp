@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-const Page = () => {
+const SettingPage = () => {
   const { pathname } = useLocation();
 
   return (
@@ -10,4 +10,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default SettingPage;
